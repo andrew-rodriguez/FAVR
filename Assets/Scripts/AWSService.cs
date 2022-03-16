@@ -46,7 +46,8 @@ public class AWSService : MonoBehaviour
                         business.name,
                         business.lat,
                         business.lon,
-                        business.alt
+                        business.alt,
+                        business.type
                     ));
             }
         }
