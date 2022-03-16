@@ -8,16 +8,18 @@ public class GeoCode : MonoBehaviour
     public float Latitude { get; }
     public float Longitude { get; }
     public float Altitude { get; }
+    public string Type { get; }
     public bool IsShown { get; set; }
     public GameObject Prefab { get; set; }
 
 
-    public GeoCode(string name, float latitude, float longitude, float altitude)
+    public GeoCode(string name, float latitude, float longitude, float altitude, string type)
     {
         Name = name;
         Latitude = latitude;
         Longitude = longitude;
         Altitude = altitude;
         IsShown = false;
+        Type = type;
     }
 }

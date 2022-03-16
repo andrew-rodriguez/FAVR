@@ -125,6 +125,12 @@ public class GPSLocation : MonoBehaviour
         float leftLimit = LeftLimit(bearing, limit);
         float rightLimit = RightLimit(bearing, limit);
 
+        if (limit == 120.0f)
+        {
+            Debug.Log("leftLimit: " + leftLimit);
+            Debug.Log("bearing: " + bearing);
+            Debug.Log("rightLimit: " + rightLimit);
+        }
         if (leftLimit > rightLimit)
         {
             // _trueHeading between leftLimit and 360-degrees
@@ -150,7 +156,7 @@ public class GPSLocation : MonoBehaviour
         float leftLimit = bearing - limit;
         if (leftLimit < 0.0f)
         {
-            leftLimit = 360.0f - leftLimit;
+            leftLimit = 360.0f + leftLimit;
         }
         return leftLimit;
     }
@@ -210,12 +216,27 @@ public class GPSLocation : MonoBehaviour
 
                     if (OnTarget(bearing, 1.0f))
                     {
-                        geoCode.IsShown = true;
-                        GameObject dealPrefab = _proximityManager.SpawnDeal(geoCode.Name);
-                        if (dealPrefab != null)
+                        switch (geoCode.Type)
                         {
-                            geoCode.Prefab = dealPrefab;
+                            case "Merchant":
+                                geoCode.IsShown = true;
+                                GameObject dealPrefab = _proximityManager.SpawnDeal(geoCode.Name);
+                                if (dealPrefab != null)
+                                {
+                                    geoCode.Prefab = dealPrefab;
+                                }
+                                break;
+
+                            case "Placenote":
+                                geoCode.IsShown = true;
+                                GameObject notePrefab = _proximityManager.SpawnPlacenote(geoCode.Name);
+                                if (notePrefab != null)
+                                {
+                                    geoCode.Prefab = notePrefab;
+                                }
+                                break;
                         }
+
                     }
                 }
                 if (geoCode.IsShown && !OnTarget(bearing, 120.0f))

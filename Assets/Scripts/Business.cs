@@ -14,6 +14,7 @@ public class Business
     public int review_count;
     public float rating;
 
+    public string type;
     public float lat;
     public float lon;
     public float alt;
