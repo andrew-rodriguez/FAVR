@@ -28,7 +28,7 @@ public class ProximityManager : MonoBehaviour
     public GameObject SpawnPlacenote(string dealName)
     {
         GameObject prefab = Instantiate(_placenote,
-            _spawnTarget.transform.position + new Vector3(2f, -1f),
+            _spawnTarget.transform.position + new Vector3(3.5f, 0.5f),
             _spawnTarget.transform.rotation);
 
         return prefab;
