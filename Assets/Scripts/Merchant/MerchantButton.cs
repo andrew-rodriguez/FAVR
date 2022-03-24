@@ -7,6 +7,7 @@ public class MerchantButton : MonoBehaviour
     [SerializeField] private GameObject _infoButton;
     [SerializeField] private GameObject _trendingButton;
     [SerializeField] private GameObject _reviewsButton;
+    [SerializeField] private GameObject _recommendButton;
 
     private bool _toggle = false;
     private Vector3 _lowerLimit;
@@ -19,6 +20,7 @@ public class MerchantButton : MonoBehaviour
         _infoButton.SetActive(_toggle);
         _trendingButton.SetActive(_toggle);
         _reviewsButton.SetActive(_toggle);
+        _recommendButton.SetActive(_toggle);
 
         _lowerLimit = this.transform.position;
         _upperLimit = new Vector3(_lowerLimit.x, _lowerLimit.y + 2.0f, _lowerLimit.z);
@@ -44,5 +46,6 @@ public class MerchantButton : MonoBehaviour
         _infoButton.SetActive(_toggle);
         _trendingButton.SetActive(_toggle);
         _reviewsButton.SetActive(_toggle);
+        _recommendButton.SetActive(_toggle);
     }
 }
